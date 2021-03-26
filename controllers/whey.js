@@ -7,6 +7,20 @@ const path = require("path");
 
 //--------------------CREATE Student------------------
 
+exports.search = asyncHandler(
+
+ async (req,res,next)=>{
+ 
+console.log(req.user )
+console.log(req.params.name)
+ Whey.find({ proteinname:{$regex:req.params.name,$options:'$i'}}).then((result)=>{
+console.log(result)
+  res.status(200).json({success:true,data:result})
+
+
+ })
+ }
+)
 exports.createWhey = asyncHandler(async (req, res, next) => {
 
   const whey = await Whey.create(req.body);

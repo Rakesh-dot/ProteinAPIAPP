@@ -6,6 +6,7 @@ const {
   getWhey, 
   getWheyById,
   WheyPhotoUpload,
+  search
   } = require("../controllers/whey");
 
   const { protect } = require("../middleware/auth");
@@ -22,6 +23,6 @@ const {
   router
   .route("/:id")
   .get(protect,getWheyById);
-
+router.route("/search/:name").post(search);
 
   module.exports = router

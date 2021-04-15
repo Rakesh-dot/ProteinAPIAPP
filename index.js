@@ -19,6 +19,7 @@ connectDB();
 const auth = require("./routes/auth");
 const user = require("./routes/user");
 const whey = require("./routes/Whey");
+const cart= require("./routes/cart")
 const { urlencoded } = require("express");
 
 // initialize out app variable with express
@@ -44,6 +45,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/auth", auth);
 app.use("/user", user);
 app.use("/whey", whey);
+app.use( cart);
+
 
 // To use the custom error message
 app.use(errorHandler);

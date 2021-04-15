@@ -47,6 +47,20 @@ exports.getWhey = asyncHandler(async (req, res, next) => {
     });
   });
 
+  exports.deleteWhey = asyncHandler(async (req, res, next) => {
+    const whey = await Whey.findById(req.params.id);
+  
+    if (!whey) {
+      return next(new ErrorResponse(`No user found `), 404);
+    }
+  
+    await whey.remove();
+  
+    res.status(200).json({
+      success: true,
+     
+    });
+  });
   // -----------------FIND Student BY ID-------------------
 
 exports.getWheyById = asyncHandler(async (req, res, next) => {

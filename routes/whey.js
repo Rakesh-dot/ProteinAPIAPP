@@ -6,10 +6,12 @@ const {
   getWhey, 
   getWheyById,
   WheyPhotoUpload,
-  search
+  search,
+  deleteWhey
   } = require("../controllers/whey");
 
   const { protect } = require("../middleware/auth");
+const whey = require("../model/whey");
 
   router
   .route("/")
@@ -22,7 +24,16 @@ const {
 
   router
   .route("/:id")
-  .get(protect,getWheyById);
+  .get(protect,getWheyById)
+  .delete( deleteWhey);
+
+
+ 
+
 router.route("/search/:name").post(search);
+
+
+ 
+
 
   module.exports = router

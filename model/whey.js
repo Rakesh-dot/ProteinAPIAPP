@@ -27,5 +27,5 @@ const Whey = new mongoose.Schema(
           },
     }
 );
-
-module.exports = mongoose.model("Whey",Whey);
+const data =mongoose.model("Whey",Whey);
+module.exports = data

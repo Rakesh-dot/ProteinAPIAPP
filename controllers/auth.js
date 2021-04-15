@@ -22,7 +22,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 //-------------------LOGIN-------------------
 
 exports.login = asyncHandler(async (req, res, next) => {
-  console.log(req.body)
+
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -31,8 +31,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // Check user
   const user = await User.findOne({ username: username }).select("+password");
-  //because in password field we have set the property select:false , but here we need as password so we added + sign
-
+  
   if (!user) {
     res
     .status(201)
@@ -42,8 +41,7 @@ exports.login = asyncHandler(async (req, res, next) => {
     });  
   }
 
-  // const isMatch = await user.matchPassword(password); // decrypt password
-  
+ 
   if (user.password!= password) {
     res
     .status(201)
@@ -53,7 +51,10 @@ exports.login = asyncHandler(async (req, res, next) => {
     });
   }
  else{
+
+ 
   sendTokenResponse(user, 200, res);
+ 
 }
 });
 
@@ -104,7 +105,9 @@ const sendTokenResponse = (user, statusCode, res) => {
     .cookie("token", token, options) // key , value ,options
     .json({
       success: true,
-      token,
+      token:token,
+      
+
     });
 
 };

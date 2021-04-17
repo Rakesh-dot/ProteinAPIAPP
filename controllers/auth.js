@@ -41,7 +41,7 @@ exports.login = asyncHandler(async (req, res, next) => {
     });  
   }
 
- 
+ console.log(user.password)
   if (user.password!= password) {
     res
     .status(201)

@@ -16,7 +16,7 @@ const whey = require("../model/whey");
   router
   .route("/")
   .get(protect,getWhey)
-  .post(protect,createWhey);
+  .post(createWhey);
 
   router
   .route("/:id/photo")
